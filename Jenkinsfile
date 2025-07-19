@@ -10,6 +10,15 @@ pipeline {
         sh 'mkdir -p build && echo "fake build output" > build/output.txt'
       }
     }
+
+    stage('Code Quality (SonarQube)') {
+      steps {
+        withSonarQubeEnv('LocalSonar') {
+          sh 'sonar-scanner'
+        }
+      }
+    }
+    
     stage('Archive Artifact') {
       steps {
         archiveArtifacts artifacts: 'build/**/*', fingerprint: true
