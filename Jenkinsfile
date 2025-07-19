@@ -4,7 +4,7 @@ pipeline {
     VERSION = "1.0.${BUILD_NUMBER}"
   }
   tools {
-    maven '3.9.11'
+    maven 'maven'
   }
   stages {
     stage('Build') {
